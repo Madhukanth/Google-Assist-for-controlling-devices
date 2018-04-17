@@ -17,6 +17,7 @@ process.env.DEBUG = "actions-on-google:*";
 let Assistant = require("actions-on-google").ApiAiAssistant;
 let express = require("express");
 let bodyParser = require("body-parser");
+let request = require("request");
 
 let app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,7 +34,8 @@ app.post("/", function(req, res) {
     var object = req.body.result.parameters.object;
     var number = req.body.result.parameters.number;
     var state = req.body.result.parameters.state;
-
+   
+    request.post("URL to your server for handling the device control");
     console.log(object + number + state);
 
     res.send(object);
